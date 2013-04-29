@@ -1,0 +1,63 @@
+= form_for @cop, :html => { :multipart => true} do |f|
+  = f.error_messages
+  %p
+    = f.label :lastname
+    %br
+    = f.text_field :lastname
+  %p
+    = f.label :firstname
+    %br
+    = f.text_field :firstname
+  %p
+    = f.label :rank
+    %br
+    = f.text_field :rank
+  %p
+    = f.label :address
+    %br
+    = f.text_field :address
+  %p
+    = f.label :city
+    %br
+    = f.text_field :city
+  %p
+    = f.label :state
+    %br
+    = f.text_field :state
+  %p
+    = f.label :zip
+    %br
+    = f.text_field :zip
+  %p
+    = f.label :badge
+    %br
+    = f.text_field :badge
+  %p
+    Associated Departments:
+    %ul
+      = f.fields_for :departments do |department_fields|
+        = department_fields.check_box :_destroy
+        = link_to department_fields.object.name, department_fields.object
+        %br
+
+    Add Department:
+    = f.select :department_ids, options_from_collection_for_select(Department.all, :id, :name), :include_blank => true
+  %p
+    Evidence:
+    %ul
+      = f.fields_for :evidences do |evidence_fields|
+        - if evidence_fields.object.new_record?
+          = evidence_fields.text_field :url
+        - else
+          %li= link_to evidence_fields.object.title, evidence_fields.object.url
+    Add new evidence:
+
+
+  %p
+    = f.fields_for :attachments do |attachment_fields|
+      - if attachment_fields.object.new_record?
+        = attachment_fields.file_field :attachment
+      - else
+        = link_to image_tag(attachment_fields.object.attachment.url(:thumb)), attachment_fields.object.attachment.url(:original)
+  %p
+    = f.submit

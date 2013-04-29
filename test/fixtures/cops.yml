@@ -1,0 +1,17 @@
+one:
+  lastname: MyString
+  firstname: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  badge: MyString
+
+two:
+  lastname: MyString
+  firstname: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  badge: MyString

@@ -1,0 +1,25 @@
+- title "Cops"
+
+%table
+  %tr
+    %th Lastname
+    %th Firstname
+    %th Address
+    %th City
+    %th State
+    %th Zip
+    %th Badge
+  - for cop in @cops
+    %tr
+      %td= cop.lastname
+      %td= cop.firstname
+      %td= cop.address
+      %td= cop.city
+      %td= cop.state
+      %td= cop.zip
+      %td= cop.badge
+      %td= link_to 'Show', cop
+      %td= link_to 'Edit', edit_cop_path(cop)
+      %td= link_to 'Destroy', cop, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Cop", new_cop_path

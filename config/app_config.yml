@@ -1,0 +1,9 @@
+development:
+  domain: localhost:3000
+  default_title: Citizens Police Tracking Board
+
+test:
+  domain: test.host
+
+production:
+  domain: example.com

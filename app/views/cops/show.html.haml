@@ -1,0 +1,41 @@
+- title @cop.lastname + " " + @cop.firstname
+- for attachment in @cop.attachments
+  = image_tag(attachment.attachment.url(:thumb))
+%p
+  Associated departments:
+  %ul
+    - for department in @cop.departments
+      %li
+        =link_to department.name, department
+%p
+  %strong Rank:
+  = @cop.rank
+%p
+  %strong Badge:
+  = @cop.badge
+%p
+  %strong Address:
+  = @cop.address
+%p
+  %strong City:
+  = @cop.city
+%p
+  %strong State:
+  = @cop.state
+%p
+  %strong Zip:
+  = @cop.zip
+
+%p
+  %strong Involvements:
+  %ul
+    - for evidence in @cop.evidences
+      %li
+        =link_to evidence.title, evidence.url
+
+%p
+  = link_to "Edit", edit_cop_path(@cop)
+  |
+  = link_to "Destroy", @cop, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", cops_path

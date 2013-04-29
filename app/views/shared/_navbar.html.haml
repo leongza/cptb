@@ -1,0 +1,17 @@
+.navbar-wrapper
+  .container
+    .navbar.navbar-inverse
+      .navbar-inner
+        = link_to APP_CONFIG[:default_title], root_path, :class => "brand"
+        %ul.nav
+          %li
+            = link_to "Departments", departments_path
+          %li
+            = link_to "Cops", cops_path
+        = form_tag user_session_path, :id => 'nav-user-sign-in', :class => 'pull-right form-inline' do
+          = text_field_tag 'user[email]', nil, :placeholder => 'Email address', :class => 'input-small'
+          = password_field_tag 'user[password]', nil, :placeholder => 'Password', :class => 'input-small'
+          = check_box_tag 'user[remember_me]'
+          = label_tag 'user[remember_me]', 'Remember me'
+          %button Sign in
+          = link_to "Forgot your password?", new_user_password_path('user')

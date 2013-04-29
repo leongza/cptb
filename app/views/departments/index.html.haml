@@ -1,0 +1,14 @@
+- title "Departments"
+%ul.thumbnails
+  - for department in @departments
+    %li.span3
+      .thumbnail
+        = link_to department do
+          =image_tag department.logo.url(:medium)
+          %h4= department.name
+        %address
+          = department.city + ", " + department.state
+        %td= link_to 'Edit', edit_department_path(department)
+        %td= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Department", new_department_path
