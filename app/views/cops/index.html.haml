@@ -2,5 +2,5 @@
 = form_tag cops_path, :method => 'get', :id => 'cops_search' do
   #cops
     = render :partial =>'cops', :locals => {:cops => @cops}
-
-%p= link_to "New Cop", new_cop_path
+- if user_signed_in?
+  %p= link_to "New Cop", new_cop_path

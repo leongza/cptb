@@ -14,5 +14,5 @@
         - if user_signed_in?
           %td= link_to 'Edit', edit_department_path(department)
           %td= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete
-
-%p= link_to "New Department", new_department_path
+- if user_signed_in?
+  %p= link_to "New Department", new_department_path
