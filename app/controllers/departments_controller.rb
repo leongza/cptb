@@ -1,10 +1,12 @@
 class DepartmentsController < ApplicationController
+  load_and_authorize_resource
   def index
     @departments = Department.all
   end
 
   def show
     @department = Department.find(params[:id])
+    @cops = @department.cops.order(sort_column + ' ' + sort_direction).page params[:page]
   end
 
   def new

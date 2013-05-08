@@ -5,6 +5,10 @@
     %br
     = f.text_field :name
   %p
+    = f.label :address
+    %br
+    = f.text_field :address
+  %p
     = f.label :city
     %br
     = f.text_field :city
@@ -13,6 +17,15 @@
     %br
     = f.text_field :state
   %p
+    = f.label :postalcode
+    %br
+    = f.text_field :postalcode
+  %p
+    = f.label :phone
+    %br
+    = f.telephone_field :phone
+  %p
+    = f.label :logo
     = f.file_field :logo
   %p
     = f.submit

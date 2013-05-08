@@ -1,24 +1,22 @@
 - title @department.name
 %p
   = image_tag @department.logo.url(:medium)
+%address.vcard
+  %span.adr
+    %span.street-address
+      = @department.address
+    %span.locality
+      = @department.city
+    %span.region
+      = @department.state
+    %span.postal-code
+      = @department.postalcode
+#cops
+  = render :partial =>'cops/cops', :locals => {:cops => @cops}
 %p
-  %strong Name:
-  = @department.name
-%p
-  %strong City:
-  = @department.city
-%p
-  %strong State:
-  = @department.state
-%ul
-  - for cop in @department.cops
-    %li
-      = link_to cop do
-        = cop.lastname + ", " + cop.firstname
-
-%p
-  = link_to "Edit", edit_department_path(@department)
-  |
-  = link_to "Destroy", @department, :confirm => 'Are you sure?', :method => :delete
-  |
+  - if user_signed_in?
+    = link_to "Edit", edit_department_path(@department)
+    |
+    = link_to "Destroy", @department, :confirm => 'Are you sure?', :method => :delete
+    |
   = link_to "View All", departments_path

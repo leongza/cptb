@@ -9,6 +9,14 @@
     %br
     = f.text_field :firstname
   %p
+    = f.label :sex
+    %br
+    = f.text_field :sex
+  %p
+    = f.label :race
+    %br
+    = f.text_field :race
+  %p
     = f.label :rank
     %br
     = f.text_field :rank
@@ -33,6 +41,10 @@
     %br
     = f.text_field :badge
   %p
+    = f.label :helmet
+    %br
+    = f.text_field :helmet
+  %p
     Associated Departments:
     %ul
       = f.fields_for :departments do |department_fields|
@@ -47,9 +59,9 @@
     %ul
       = f.fields_for :evidences do |evidence_fields|
         - if evidence_fields.object.new_record?
-          = evidence_fields.text_field :url
+          = evidence_fields.url_field :url
         - else
-          %li= link_to evidence_fields.object.title, evidence_fields.object.url
+          %li= link_to evidence_fields.object.title, evidence_fields.object.url, :target => "_blank"
     Add new evidence:
 
 

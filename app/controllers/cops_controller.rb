@@ -1,6 +1,12 @@
 class CopsController < ApplicationController
+
+  load_and_authorize_resource
   def index
-    @cops = Cop.all
+    @cops = Cop.search(params[:search]).joins(:departments).order(sort_column + ' ' + sort_direction).page params[:page]
+  end
+
+  def search
+    @cops = Cop.search params[:search]
   end
 
   def show
@@ -47,4 +53,6 @@ class CopsController < ApplicationController
     @cop.destroy
     redirect_to cops_url, :notice => "Successfully destroyed cop."
   end
+
+
 end

@@ -1,0 +1,40 @@
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
+= hidden_field_tag :page, params[:page]
+%table.table.table-zebra
+  %tr
+    %th
+    %th= sortable "lastname", "Last Name"
+    %th= sortable "firstname", "First Name"
+    %th= sortable "rank", "Rank"
+    %th= sortable "badge", "Badge #"
+    %th= sortable "helmet", "Helmet #"
+    - unless @department
+      %th Department
+    %th
+    - if user_signed_in?
+      %th
+      %th
+  - for cop in @cops
+    %tr
+      %td
+        = link_to cop, :alt => "View", :title => "View", :class=>"smallthumb" do
+          = image_tag cop.portrait.attachment.url(:small)
+      %td= cop.lastname
+      %td= cop.firstname
+      %td= cop.rank
+      %td= cop.badge
+      %td= cop.helmet
+      - unless @department
+        %td= cop.department.name
+      %td
+        = link_to cop, :alt => "View", :title => "View" do
+          %i.icon-eye-open
+      - if user_signed_in?
+        %td
+          = link_to edit_cop_path(cop.id), :alt => "Edit", :title => "Edit" do
+            %i.icon-edit
+        %td
+          = link_to cop, :confirm => 'Are you sure?', :method => :delete, :alt => "Destroy", :title => "Destroy" do
+            %i.icon-remove
+= paginate @cops

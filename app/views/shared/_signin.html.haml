@@ -1,0 +1,13 @@
+- if user_signed_in?
+  Signed in as
+  = current_user.email
+  %br
+  = link_to 'Logout', destroy_user_session_path, :method => :delete
+- else
+  = form_tag user_session_path, :id => 'nav-user-sign-in', :class => 'form-inline' do
+    = text_field_tag 'user[email]', nil, :placeholder => 'Email address', :class => 'input-small'
+    = password_field_tag 'user[password]', nil, :placeholder => 'Password', :class => 'input-small'
+    %button Sign in
+    %br
+    = label_tag 'user[remember_me]', 'Remember me'
+    = check_box_tag 'user[remember_me]'

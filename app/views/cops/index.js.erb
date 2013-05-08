@@ -1,0 +1,5 @@
+$('#cops').html('<%= escape_javascript(render("cops")) %>');
+$('#cops th a, #cops .pagination a').on('click', function () {
+  $.getScript(this.href);
+  return false;
+});

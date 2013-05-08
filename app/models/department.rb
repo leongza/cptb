@@ -1,5 +1,7 @@
 class Department < ActiveRecord::Base
-  attr_accessible :name, :city, :state, :logo
+  attr_accessible :name, :address, :city, :state, :postalcode, :phone, :logo
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  has_and_belongs_to_many :cops
+  has_many :rosters
+  has_many :cops, :through => :rosters
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428003846) do
+ActiveRecord::Schema.define(:version => 20130502080403) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachment_file_name"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(:version => 20130428003846) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "cop_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "priority"
+    t.boolean  "verified",                :default => false
   end
 
   create_table "cops", :force => true do |t|
@@ -38,6 +40,9 @@ ActiveRecord::Schema.define(:version => 20130428003846) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "rank"
+    t.string   "helmet"
+    t.string   "sex"
+    t.string   "race"
   end
 
   create_table "cops_departments", :id => false, :force => true do |t|
@@ -57,6 +62,9 @@ ActiveRecord::Schema.define(:version => 20130428003846) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "postalcode"
   end
 
   create_table "evidences", :force => true do |t|
@@ -65,6 +73,14 @@ ActiveRecord::Schema.define(:version => 20130428003846) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cop_id"
+  end
+
+  create_table "rosters", :force => true do |t|
+    t.integer  "cop_id"
+    t.integer  "department_id"
+    t.string   "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -80,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130428003846) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "confirmed"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
