@@ -1,6 +1,8 @@
 - title @cop.lastname + " " + @cop.firstname
-- for attachment in @cop.attachments
-  = link_to image_tag(attachment.attachment.url(:thumb)), attachment.attachment.url(:original)
+%ul#sortable
+  - for attachment in @cop.attachments
+    %li.ui-state-default
+      = link_to image_tag(attachment.attachment.url(:thumb)), attachment.attachment.url(:original)
 %p
   Associated departments:
   %ul

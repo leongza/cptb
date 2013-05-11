@@ -1,6 +1,5 @@
 class CopsController < ApplicationController
 
-  load_and_authorize_resource
   def index
     @cops = Cop.search(params[:search]).joins(:departments).order(sort_column + ' ' + sort_direction).page params[:page]
   end
@@ -19,7 +18,7 @@ class CopsController < ApplicationController
   end
 
   def create
-    @cop = Cop.new(params[:cop])
+    @cop = Cop.new(cop_params)
     if @cop.save
       redirect_to @cop, :notice => "Successfully created cop."
     else
@@ -29,7 +28,7 @@ class CopsController < ApplicationController
 
   def edit
     @cop = Cop.find(params[:id])
-    @cop.attachments.build
+    #@cop.attachments.build
     @cop.evidences.build
   end
 
@@ -41,7 +40,7 @@ class CopsController < ApplicationController
       @cop.departments << department
     end
 
-    if @cop.update_attributes(params[:cop])
+    if @cop.update_attributes(cop_params)
       redirect_to @cop, :notice  => "Successfully updated cop."
     else
       render :action => 'edit'
@@ -53,6 +52,10 @@ class CopsController < ApplicationController
     @cop.destroy
     redirect_to cops_url, :notice => "Successfully destroyed cop."
   end
-
+  def cop_params
+    if current_user && current_user.verified?
+      params.require(:cop).permit(:lastname, :firstname, :sex, :race, :rank, :address, :city, :state, :zip, :helmet, :badge, { attachments_attributes: [ :id, :verified ]}, { departments_attributes: [ :id, :_destroy ] }, { evidences_attributes: [ :url, :id, :_destroy ]})
+    end
+  end
 
 end

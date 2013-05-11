@@ -1,11 +1,11 @@
 class Cop < ActiveRecord::Base
-  attr_accessible :lastname, :firstname, :sex, :race, :rank, :address, :city, :state, :zip, :badge, :helmet, :attachments_attributes, :departments_attributes, :evidences_attributes, :department_ids, :evidence_ids
+  #attr_accessible :lastname, :firstname, :sex, :race, :rank, :address, :city, :state, :zip, :badge, :helmet, :attachments_attributes, :departments_attributes, :evidences_attributes, :department_ids, :evidence_ids
   has_many :attachments
   has_many :evidences
   has_many :rosters, :dependent => :destroy
   has_many :departments, :through => :rosters
   accepts_nested_attributes_for :attachments, :allow_destroy => true
-  accepts_nested_attributes_for :evidences, :reject_if => :all_blank?
+  accepts_nested_attributes_for :evidences, :reject_if => :all_blank
   accepts_nested_attributes_for :departments, :allow_destroy => true
   paginates_per 50
 

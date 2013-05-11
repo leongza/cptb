@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  load_and_authorize_resource
+
   def index
     @departments = Department.all
   end
@@ -14,7 +14,7 @@ class DepartmentsController < ApplicationController
   end
 
   def create
-    @department = Department.new(params[:department])
+    @department = Department.new(department_params)
     if @department.save
       redirect_to @department, :notice => "Successfully created department."
     else
@@ -28,7 +28,7 @@ class DepartmentsController < ApplicationController
 
   def update
     @department = Department.find(params[:id])
-    if @department.update_attributes(params[:department])
+    if @department.update_attributes(department_params)
       redirect_to @department, :notice  => "Successfully updated department."
     else
       render :action => 'edit'
@@ -40,4 +40,12 @@ class DepartmentsController < ApplicationController
     @department.destroy
     redirect_to departments_url, :notice => "Successfully destroyed department."
   end
+
+  private
+
+    def department_params
+      if current_user && current_user.verified?
+        params.require(:department).permit(:name, :address, :city, :state, :postalcode, :phone, :logo)
+      end
+    end
 end

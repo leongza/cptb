@@ -52,8 +52,6 @@ gem 'paperclip'
 
 gem "mocha", :group => :test
 gem 'devise', '3.0.0.rc'
-gem 'cancan'
 gem 'acts-as-taggable-on', '2.4.1'
 gem 'kaminari'
 gem 'nokogiri'
-gem 'protected_attributes'

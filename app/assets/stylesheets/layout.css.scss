@@ -1,6 +1,7 @@
 /**/
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import "bootstrapSwitch";
 /* Sticky footer styles
 -------------------------------------------------- */
 
@@ -75,5 +76,12 @@ table th .desc:after {
     margin-right: auto;
     display:block;
     border: 1px blue solid;
+  }
+}
+ul#sortable {
+  list-style: none;
+  li {
+    padding: 5px;
+    display: inline;
   }
 }
