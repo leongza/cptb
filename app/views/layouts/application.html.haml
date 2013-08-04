@@ -17,10 +17,11 @@
           = render :partial => 'navbar'
           - flash.each do |name, msg|
             = content_tag :div, msg, :id => "flash_#{name}"
+        .content-outer
+          .content-inner
+            - if show_title?
+              %h1.page-header= yield(:title)
 
-          - if show_title?
-            %h1.page-header= yield(:title)
-
-        = yield
+            = yield
       #push
     = render :partial => 'footer'

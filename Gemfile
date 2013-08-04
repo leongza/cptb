@@ -39,7 +39,7 @@ gem 'json'
 
 # SCSS
 gem 'bourbon'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.3.2.1'
 
 #markdown
 gem 'rdiscount'

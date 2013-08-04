@@ -1,15 +1,19 @@
 .navbar-wrapper
   .container
-    .navbar.navbar-inverse
+    .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
-        = link_to APP_CONFIG[:default_title], root_path, :class => "brand"
-        %ul.nav
-          %li
-            = link_to "Departments", departments_path
-          %li
-            = link_to "Cops", cops_path
-        #search.pull-right.form-inline
-          = render :partial => 'search'
-      .navbar-inner.pull-right
-        #sign-in.form-inline
-          = render :partial => 'signin'
+        .container
+          = link_to APP_CONFIG[:default_title], root_path, :class => "brand"
+          %ul.nav
+            %li
+              = link_to "Departments", departments_path
+            %li
+              = link_to "Cops", cops_path        
+          %ul.nav.pull-right
+            %li
+              #search.form-inline
+                = render :partial => 'search'
+            %li
+              = link_to new_user_session_path, remote: true do
+                %i.icon-user
+                %i.icon-chevron-down

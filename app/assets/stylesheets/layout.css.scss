@@ -1,10 +1,57 @@
 /**/
+$dkGrey: #222222;
+$dkGrey1: #282828;
+$grayLight: #999;
+
+$bodyBackground: $dkGrey1;
+$textColor: $grayLight;
+
+$navbarInverseBackround: $dkGrey;
+$navbarHeight: 50px;
+
+$inputBackground: #f6f6f6;
+
+@include font-face (Oswald, '/assets/oswald', normal);
+$oswaldFontFamily: Oswald, sans-serif;
+$headingsFontFamily: $oswaldFontFamily;
+$headingsColor: #222222;
+$linkColor: #004276;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "bootstrapSwitch";
 /* Sticky footer styles
 -------------------------------------------------- */
+.navbar-inverse .navbar-inner {
+  @include linear-gradient(#414141 0%, #222222 50%, #1f1f1f 51%, #1f1f1f 90%, #202020 100%);
+}
+.content-outer {
+  margin-top: 60px;
+  background-color: tint(#222222, 14%);
+  border-radius: 5px;
+  padding: 10px;
+}
+.content-inner {
+  background-color: #fbfbfb;
+  color: $grayDark;
+  padding: 10px;
+  input {
+    box-shadow: 2px 2px 5px 0 #EEEEEE inset;
+  }
+}
 
+.navbar-search button {
+  background-color: #565656;
+}
+.navbar-inverse{
+  .navbar-inner {
+    border-bottom: 1px solid #444444;
+    box-shadow: 0 4px 10px -3px #000000;
+    form {
+      margin: 10px 0;
+    }
+  }
+}
 
 html,
 body {
@@ -23,12 +70,15 @@ body {
 
 /* Set the fixed height of the footer here */
 #push,
-#footer {
+footer {
   height: 60px;
   margin-top: 20px;
 }
-#footer {
-  background-color: #f5f5f5;
+footer {
+  background-color: #222222;
+  .container {
+    padding: 20px 20px 0 20px;
+  }
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */
