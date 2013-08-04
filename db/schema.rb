@@ -11,22 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130511233911) do
-
-  create_table "addresses", force: true do |t|
-    t.string   "name"
-    t.string   "line1"
-    t.string   "line2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postalcode"
-    t.integer  "addressable_id"
-    t.string   "addressable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+ActiveRecord::Schema.define(version: 20130502080403) do
 
   create_table "attachments", force: true do |t|
     t.string   "attachment_file_name"
@@ -34,8 +19,8 @@ ActiveRecord::Schema.define(version: 20130511233911) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "cop_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "priority"
     t.boolean  "verified",                default: false
   end
@@ -43,13 +28,13 @@ ActiveRecord::Schema.define(version: 20130511233911) do
   create_table "cops", force: true do |t|
     t.string   "lastname"
     t.string   "firstname"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.string   "badge"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "rank"
     t.string   "helmet"
     t.string   "sex"
@@ -65,20 +50,24 @@ ActiveRecord::Schema.define(version: 20130511233911) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "address"
     t.string   "phone"
+    t.string   "postalcode"
   end
 
   create_table "evidences", force: true do |t|
     t.string   "title"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "cop_id"
   end
 
@@ -86,8 +75,8 @@ ActiveRecord::Schema.define(version: 20130511233911) do
     t.integer  "cop_id"
     t.integer  "department_id"
     t.string   "status"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -101,8 +90,8 @@ ActiveRecord::Schema.define(version: 20130511233911) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "confirmed"
   end
 
