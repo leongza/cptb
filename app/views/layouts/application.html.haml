@@ -13,7 +13,7 @@
   %body
     #wrap
       .container
-        = render :partial => 'shared/navbar'
+        = render :partial => 'navbar'
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}"
 
@@ -22,4 +22,4 @@
 
         = yield
       #push
-    = render :partial => 'shared/footer'
+    = render :partial => 'footer'

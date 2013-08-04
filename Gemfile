@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-gem 'sass-rails',   '~> 4.0.0.rc1'
+gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -51,7 +51,7 @@ gem 'haml'
 gem 'paperclip'
 
 gem "mocha", :group => :test
-gem 'devise', '3.0.0.rc'
+gem 'devise', '3.0.1'
 gem 'acts-as-taggable-on', '2.4.1'
 gem 'kaminari'
 gem 'nokogiri'
