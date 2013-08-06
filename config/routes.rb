@@ -1,10 +1,10 @@
 CPTB::Application.routes.draw do
   devise_for :users
 
-  resources :departments
+  root to: 'departments#index'
 
+  resources :departments
   resources :cops
-  root :to => 'departments#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
