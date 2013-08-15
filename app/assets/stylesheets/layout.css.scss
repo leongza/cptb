@@ -11,7 +11,10 @@ $navbarHeight: 50px;
 
 $inputBackground: #f6f6f6;
 
-@include font-face (Oswald, '/assets/oswald', normal);
+@font-face {
+  font-family: 'Oswald';
+  src: url(font-path('oswald.woff')) format('woff');
+  }
 $oswaldFontFamily: Oswald, sans-serif;
 $headingsFontFamily: $oswaldFontFamily;
 $headingsColor: #222222;
