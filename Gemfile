@@ -15,6 +15,10 @@ gem 'therubyracer', :platforms => :ruby
 
 gem 'uglifier', '>= 1.3.0'
 
+group :production do
+  gem 'pg'
+end
+
 group :development do
   gem 'nifty-generators'
 end

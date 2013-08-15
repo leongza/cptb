@@ -7,3 +7,4 @@ test:
 
 production:
   domain: example.com
+  default_title: Citizens Police Tracking Board
